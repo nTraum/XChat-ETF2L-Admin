@@ -7,11 +7,11 @@ import exceptions
 __module_name__ = 'ETF2L Admin'
 __module_version__ = '1.1'
 __module_description__ = '''Easy admin-request handling for ETF2L admins.
-When the bot announces a request, type `/r` to take care of it. The user will automatically be queried for you.
+When the bot announces a request, type `/g` to take care of it. The user will automatically be queried for you.
 '''
 
-HELP_MSG='''/r <ID> takes request with specified ID.
-/r takes latest request.'''
+HELP_MSG='''/g <ID> takes request with specified ID.
+/g takes latest request.'''
 ADMIN_CHANNEL = '#etf2l.admins'
 REGEX_BOT_REQUEST_MSG = r'Info: Admin requested in (?P<chan>#.+) by (?P<nick>.+), Request ID: (?P<id>\d+)'
 REGEX_BOT_REMINDER_MSG = r'Open admin request by (?P<nick>.+) ID: (?P<id>\d+)'
@@ -49,7 +49,6 @@ class RequestHandler:
    self.requests[id] = nick
    debug('Added request to queue: #{} by {}'.format(id,nick))
 
-
 def say(msg):
   print('[{}] {}'.format(__module_name__, msg))
 
@@ -58,7 +57,6 @@ def debug(msg):
     say(msg)
 
 def on_msg(word, word_eol, handler):
-
   colorRe = re.compile(r"(||[0-9]{1,2}(,[0-9]{1,2}|))")
   msg = colorRe.sub("",word[1])
   channel = xchat.get_context().get_info('channel')
@@ -94,13 +92,13 @@ def on_msg(word, word_eol, handler):
    debug('Message did not match regex, ignoring...')
    return xchat.EAT_NONE
 
-def r(word, word_eol, handler):
+def g(word, word_eol, handler):
   channel = xchat.get_context().get_info('channel')
   if channel != ADMIN_CHANNEL:
     say('This command can be used in {} only.'.format(ADMIN_CHANNEL))
     return xchat.EAT_XCHAT
   if len(word) > 2:
-    say('Too many arguments, type \'/help r\' to get help.')
+    say('Too many arguments, type \'/help g\' to get help.')
     return xchat.EAT_XCHAT
 
   if 1 == len(word):
@@ -123,4 +121,4 @@ h = RequestHandler()
 
 xchat.hook_print('Channel Message', on_msg, h)
 xchat.hook_print('Channel Msg Hilight', on_msg, h)
-xchat.hook_command('r', r, h,help=HELP_MSG)
+xchat.hook_command('g', g, h,help=HELP_MSG)
