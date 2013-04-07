@@ -4,11 +4,11 @@ XChat / HexChat plugin for easy handling of admin requests. It will automaticall
 Tested with HexChat 2.9.5.
 
 ## Installation
-Download and install Python for scripts from the [HexChat homepage](http://hexchat.org/downloads.html).
+1. Download and install Python for scripts from the [HexChat homepage](http://hexchat.org/downloads.html).
 
-Download and install HexChat from the [HexChat homepage](http://hexchat.org/downloads.html). Make sure to enable the Python language Interface when installing HexChat.
+2. Download and install HexChat from the [HexChat homepage](http://hexchat.org/downloads.html). Make sure to enable the Python language Interface when installing HexChat.
 
-Download the [latest zip file](https://github.com/nTraum/XChat-ETF2L-Admin/archive/master.zip). Copy `etf2l_admin.py` to `%APPDATA%\HexChat\addons\`. Create the `addons` folder if necessary.
+3. Download the [latest zip file](https://github.com/nTraum/XChat-ETF2L-Admin/archive/master.zip). Copy `etf2l_admin.py` to `%APPDATA%\HexChat\addons\`. Create the `addons` folder if necessary.
 
 ## Usage
 Type `/g` to take the latest request.
