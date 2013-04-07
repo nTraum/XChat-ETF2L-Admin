@@ -5,7 +5,7 @@ import re
 import exceptions
 
 __module_name__ = 'ETF2L Admin'
-__module_version__ = '1.1'
+__module_version__ = '1.2'
 __module_description__ = '''Easy admin-request handling for ETF2L admins.
 When the bot announces a request, type `/g` to take care of it. The user will automatically be queried for you.
 '''
@@ -36,7 +36,7 @@ class RequestHandler:
     context.command('query {}'.format(nick))
     context.command('msg {} Hi {}, how can I help you?'.format(nick, nick))
     if len(self.requests) != 0:
-     self.latest_id = self.requests.iterkeys()
+     self.latest_id = self.requests.iterkeys().next
     else:
      debug('Request queue is now empty.')
      self.latest_id = None
