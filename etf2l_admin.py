@@ -10,8 +10,8 @@ __module_description__ = '''Easy admin-request handling for ETF2L admins.
 When the bot announces a request, type  '/g' to take care of it. The user will automatically be queried for you.
 '''
 
-HELP_MSG='''/r <ID> takes request with specified ID.
-/r takes latest request.'''
+HELP_MSG='''/g <ID> takes request with specified ID.
+/g takes latest request.'''
 ADMIN_CHANNEL = '#etf2l.admins'
 REGEX_BOT_REQUEST_MSG = r'Info: Admin requested in (?P<chan>#.+) by (?P<nick>.+), Request ID: (?P<id>\d+)'
 REGEX_BOT_REMINDER_MSG = r'Open admin request by (?P<nick>.+) ID: (?P<id>\d+)'
