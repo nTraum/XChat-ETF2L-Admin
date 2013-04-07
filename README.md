@@ -1,6 +1,7 @@
-# XChat ETF2L Admin
+# XChat / HexChatETF2L Admin
 
-XChat plugin for easy handling of admin requests. It will automatically take the latest request and query the user appropriately.
+XChat / HexChat plugin for easy handling of admin requests. It will automatically take the latest request and query the user appropriately.
+Tested with HexChat 2.9.5.
 
 ## Installation
 Download and install Python for scripts from the [HexChat homepage](http://hexchat.org/downloads.html).
