@@ -15,4 +15,4 @@ Type `/g` to take the latest request.
 Type `/g 42` to take the request with ID 42.
 
 ## Credits
-Crafz for the original mirc-plugin. emb for fixing the code.
+Crasp for the original mirc-plugin. emb for fixing the code.
