@@ -5,7 +5,7 @@ import re
 import exceptions
 
 __module_name__ = 'ETF2L Admin'
-__module_version__ = '1.2'
+__module_version__ = '1.3'
 __module_description__ = '''Easy admin-request handling for ETF2L admins.
 When the bot announces a request, type  '/g' to take care of it. The user will automatically be queried for you.
 '''
@@ -14,7 +14,7 @@ HELP_MSG='''/g <ID> takes request with specified ID.
 /g takes latest request.'''
 ADMIN_CHANNEL = '#etf2l.admins'
 REGEX_BOT_REQUEST_MSG = r'Info: Admin requested in (?P<chan>#.+) by (?P<nick>.+), Request ID: (?P<id>\d+)'
-REGEX_BOT_REMINDER_MSG = r'Open admin request by (?P<nick>.+) ID: (?P<id>\d+)'
+REGEX_BOT_REMINDER_MSG = r'Open admin request by (?P<nick>.+) ID: (?P<id>\d+) \(made (?P<time>\d+) minutes ago\)'
 REGEX_REQUEST_TAKEN_MSG = r'!got (?P<id>\d+)'
 DEBUG = False
 
@@ -102,8 +102,12 @@ def on_msg(word, word_eol, handler):
       try:
         curr_user = m.group('nick')
         curr_id = int(m.group('id'))
-        h.add_request(curr_id, curr_user)
-        debug('Request added, Nick: {}, ID: #{}'.format(curr_user, curr_id))
+        curr_time = int(m.group('time'))
+        if curr_time >= 25:
+          h.del_request(curr_id)
+        else:
+          h.add_request(curr_id, curr_user)
+          debug('Request added, Nick: {}, ID: #{}'.format(curr_user, curr_id))
         return xchat.EAT_NONE
       except exceptions.ValueError:
         debug('Could not parse {} to integer'.format(m.group('id')))
